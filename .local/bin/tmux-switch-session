@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# List all tmux sessions
+sessions=$(tmux list-sessions -F "#{session_name}" | tac)
+
+# Exit if no sessions exist
+if [[ -z "$sessions" ]]; then
+    echo "No tmux sessions found."
+    exit 1
+fi
+
+# Select one with fzf
+selected=$(tmux list-sessions -F "#{session_name}" | tac | fzf --prompt="Switch to session: " \
+  --preview 'tmux list-windows -t {}')
+
+# Exit if nothing selected
+[ -z "$selected" ] && exit 0
+
+# Attach or switch depending on context
+if [ -n "$TMUX" ]; then
+    # Inside tmux → switch client
+    tmux switch-client -t "$selected"
+else
+    # Outside tmux → attach
+    tmux attach -t "$selected"
+fi

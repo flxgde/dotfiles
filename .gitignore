@@ -1,0 +1,9 @@
+# NVIM lazy lock and undo tmp dir
+/.config/nvim/lazy-lock.json
+/.config/nvim/undodir
+
+.DS_Store
+
+# Other temporary files
+*.swp
+*.tmp

@@ -1,0 +1,8 @@
+font-family = "0xProto Nerd Font Mono"
+font-size = 24
+
+background-opacity = 0.93
+background-blur = true
+
+theme = "nord"
+
