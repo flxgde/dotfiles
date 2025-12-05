@@ -4,7 +4,7 @@ return {
     dir = "~/.config/nvim/lua/flxg/localplugins/tmuxsession",
     dependencies = { "nvim-telescope/telescope.nvim" },
     keys = {
-        { "<leader>h", function() require("flxg.localplugins.tmuxsession").switch() end, desc = "Switch Tmux Session" },
+        { "<leader><space>", function() require("flxg.localplugins.tmuxsession").switch() end, desc = "Switch Tmux Session" },
 
     },
     config = function()

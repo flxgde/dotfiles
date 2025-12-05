@@ -54,7 +54,18 @@ return {
       options = {
         theme = my_lualine_theme,
       },
+      tabline = {
+        lualine_a = {'filename'},
+        lualine_b = {'branch'},
+        lualine_c = {'diagnostics'},
+        lualine_x = {},
+        lualine_y = {'lsp_status'},
+        lualine_z = {'filesize'}
+      },
       sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'buffers' },
+        lualine_c = { },
         lualine_x = {
           {
             lazy_status.updates,

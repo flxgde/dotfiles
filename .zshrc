@@ -31,13 +31,13 @@ ZSH_THEME=""
 # Load colors
 autoload -U colors && colors
 
-PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b$(git_prompt_inf)%B%F{white}>%f%b '
+PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F{white}]%f%b%B%F{white}[%f%b%F{magenta}%m%B%F{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b$(git_prompt_inf)%B%F{white}>%f%b '
 
 RPROMPT='%F{yellow}%D{%H:%M:%S}%f'
 
 
 # Left prompt: [username][path] >
-# PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b %B%F{magenta}>%f%b '
+# PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F@@@{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b %B%F{magenta}>%f%b '
 
 # Right prompt: current time HH:MM:SS in yellow
 # RPROMPT='%F{yellow}%D{%H:%M:%S}%f'
@@ -71,7 +71,7 @@ tmux-switcher-widget() {
   zle accept-line
 }
 zle -N tmux-switcher-widget
-bindkey '\eh' tmux-switcher-widget
+bindkey '\e\e' tmux-switcher-widget
 
 tmux-sessionizer-widget() {
   BUFFER="tmux-sessionizer"
@@ -98,5 +98,11 @@ bindkey '\ep' configreload-widget
 
 eval "$(zoxide init zsh)"
 
+##############
+### SDKMAN ###
+##############
 
+if [[ $(uname) == "Darwin" ]]; then
+  source ~/.sdkman/bin/sdkman-init.sh
+fi
 
