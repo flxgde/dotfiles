@@ -106,3 +106,6 @@ if [[ $(uname) == "Darwin" ]]; then
   source ~/.sdkman/bin/sdkman-init.sh
 fi
 
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
