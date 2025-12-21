@@ -67,6 +67,45 @@ bindkey '\ep' configreload-widget
 
 eval "$(zoxide init zsh)"
 
+################
+#### ALIASES ###
+################
+
+if [ -f ~/.aliases ]; then
+    source ~/.aliases
+fi
+
+###############
+####  NVM  ####
+###############
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+###############
+### HISTORY ###
+###############
+
+HISTDIR="${HOME}/.zsh_histories"
+mkdir -p "$HISTDIR"
+
+if [ -n "$TMUX" ]; then
+    TMUX_SESSION=$(tmux display-message -p '#S' | tr -cs '[:alnum:]_-' '_')
+    export HISTFILE="${HOME}/.zsh_histories/history_${TMUX_SESSION}"
+else
+    export HISTFILE="${HOME}/.zsh_histories/history_default"
+fi
+
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+
+# COMMAND TO MERGE HISTORIES: 
+# cat ~/.zsh_histories/history_* | sort -u > ~/.zsh_history_merged
+
 ##############
 ### SDKMAN ###
 ##############
@@ -74,16 +113,6 @@ eval "$(zoxide init zsh)"
 if [[ $(uname) == "Darwin" ]]; then
   source ~/.sdkman/bin/sdkman-init.sh
 fi
-
-if [ -f ~/.aliases ]; then
-    source ~/.aliases
-fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
