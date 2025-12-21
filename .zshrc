@@ -5,43 +5,11 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.rd/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-######################################
-### 		PROMT 		   ###
-######################################
-
-# Function to get current git branch and status
-git_prompt_inf() {
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    local branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
-    local status_val
-    if ! git diff --quiet 2>/dev/null; then
-      status_val="✗"  # uncommitted changes
-    elif ! git diff --cached --quiet 2>/dev/null; then
-      status_val="⚡"  # staged
-    else
-      status_val="✔"  # clean
-    fi
-    # Wrap branch in bold white brackets with spaces
-    echo '%B%F{white}[%b%f%F{yellow}'"$branch $status_val"'%f%B%F{white}]%f%b '
-  fi
-}
-
 # Disable Oh My Zsh theme
-ZSH_THEME=""
+ZSH_THEME="agnoster"
 
 # Load colors
 autoload -U colors && colors
-
-PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F{white}]%f%b%B%F{white}[%f%b%F{magenta}%m%B%F{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b$(git_prompt_inf)%B%F{white}>%f%b '
-
-RPROMPT='%F{yellow}%D{%H:%M:%S}%f'
-
-
-# Left prompt: [username][path] >
-# PROMPT='%B%F{white}[%f%b%F{green}%n%f%B%F@@@{white}]%f%b%B%F{white}[%f%b%F{blue}%~%f%B%F{white}]%f%b %B%F{magenta}>%f%b '
-
-# Right prompt: current time HH:MM:SS in yellow
-# RPROMPT='%F{yellow}%D{%H:%M:%S}%f'
 
 plugins=(
   git
