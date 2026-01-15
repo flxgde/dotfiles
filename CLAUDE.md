@@ -12,16 +12,19 @@ Personal dotfiles repository containing configurations for a development environ
 .zshrc                      # Shell config (Oh My Zsh, aliases, keybinds)
 .config/
   nvim/                     # Neovim config (see .config/nvim/CLAUDE.md for details)
-  tmux/tmux.conf            # Tmux config (prefix: C-a, vi keys)
-  ghostty/config            # Ghostty terminal (Catppuccin theme)
+  tmux/tmux.conf            # Tmux config (prefix: C-a, vi keys, tpm plugins, theme detection)
+  ghostty/config            # Ghostty terminal (auto-detects light/dark theme)
   hypr/                     # Hyprland window manager (Linux only)
     hyprland.conf           # Main config with keybinds and window rules
     hyprlock.conf           # Lock screen config
   waybar/                   # Status bar (Linux)
   wofi/                     # App launcher (Linux)
+  starship.toml             # Starship prompt (bracketed-segments preset)
 .local/bin/                 # Custom scripts
   tmux-sessionizer          # Create/switch tmux sessions from directories
   tmux-switch-session       # Switch between existing tmux sessions
+  detect-system-theme       # Detect system theme (light/dark)
+  sync-theme                # Sync theme across components (tmux, zsh)
 ```
 
 ## Key Conventions
@@ -69,3 +72,23 @@ Personal dotfiles repository containing configurations for a development environ
 - WS 4: IDE (DP-2)
 - WS 6: Mail
 - WS 8: Spotify
+
+## Theme System
+
+**Theme Detection:**
+- `detect-system-theme` script detects system-wide light/dark theme preference
+- macOS: Reads `AppleInterfaceStyle` setting
+- Linux: Checks GTK preferences and GNOME dconf settings
+
+**Theme-aware Components:**
+- **Tmux:** Auto-detects theme and uses Catppuccin `latte` (light) or `macchiato` (dark)
+- **Nvim:** Uses Catppuccin with `flavour = "auto"` for automatic detection
+- **Ghostty:** Uses Catppuccin themes configured as `light:Latte, dark:Macchiato`
+- **Starship:** Uses `bracketed-segments` preset with system colors (no theme-specific palette)
+
+**Syncing Themes:**
+Run `sync-theme` script to reload theme across components when system theme changes:
+```bash
+sync-theme
+```
+This will reload tmux config and regenerate shell prompt. Nvim and Ghostty auto-detect on next load.

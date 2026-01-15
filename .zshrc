@@ -122,8 +122,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 ### STARSHIP ###
 ################
 
-# Generate starship config based on system theme
-$HOME/.local/bin/generate-starship-config
-
 eval "$(starship init zsh)"
 

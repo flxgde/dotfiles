@@ -2,6 +2,9 @@
 /.config/nvim/lazy-lock.json
 /.config/nvim/undodir
 
+# Tmux plugins directory (installed by playbook/tpm)
+/.config/tmux/plugins
+
 .DS_Store
 
 # Other temporary files

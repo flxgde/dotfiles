@@ -6,14 +6,16 @@ This repository contains my personal configuration files for a clean and customi
 
 ## Features
 
-- **Shell:** Zsh with plugins for autosuggestions, syntax highlighting, and fast syntax highlighting.  
-- **Window Manager:** Hyprland with custom workspace and theme configuration.  
-- **Editor:** Neovim with modular Lua configuration, plugin management, and LSP support.  
-- **Terminal:** Ghostty with personalized settings.  
-- **Status Bar:** Waybar with scripts for updates and system monitoring.  
-- **Launcher:** Wofi with custom styling.  
-- **Tmux:** Tmux configuration with helper scripts for session management.  
-- **Scripts:** Custom binaries in `.local/bin` for workflow utilities.
+- **Shell:** Zsh with plugins for autosuggestions, syntax highlighting, and fast syntax highlighting.
+- **Prompt:** Starship with `bracketed-segments` preset for a clean, minimal prompt.
+- **Window Manager:** Hyprland with custom workspace and theme configuration.
+- **Editor:** Neovim with modular Lua configuration, plugin management, and LSP support.
+- **Terminal:** Ghostty with personalized settings and auto-detecting Catppuccin theme.
+- **Status Bar:** Waybar with scripts for updates and system monitoring.
+- **Launcher:** Wofi with custom styling.
+- **Tmux:** Tmux with tpm (Tmux Plugin Manager), Catppuccin theme that auto-detects system light/dark preference.
+- **Scripts:** Custom binaries in `.local/bin` for workflow utilities and theme management.
+- **Theme System:** Automatic light/dark theme detection across all components with `sync-theme` utility.
 
 ---
 
@@ -42,4 +44,24 @@ chmod +x ~/.local/bin/*
 4. **Set Zsh as the default shell (optional):**
 
 chsh -s /usr/bin/zsh
+
+---
+
+## Theme Management
+
+All components support automatic light/dark theme detection:
+
+**To sync themes when system theme changes:**
+```bash
+sync-theme
+```
+
+This script reloads:
+- **Tmux** configuration with theme-aware Catppuccin flavor
+- **Zsh** shell environment
+
+Components that auto-detect on next load:
+- **Neovim** - Catppuccin with `flavour = "auto"`
+- **Ghostty** - Configured with both light and dark themes
+- **Starship** - Uses system colors (preset-based, no palette switching)
 
