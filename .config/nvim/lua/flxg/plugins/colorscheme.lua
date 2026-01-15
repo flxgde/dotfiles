@@ -2,24 +2,15 @@ return {
   "catppuccin/nvim",
   priority = 1000,
   config = function()
-    local time = os.date("*t")
-    if time.hour < 8 or time.hour > 19 then
-      Transparent = true
-    else
-      Transparent = true
-    end
     require("catppuccin").setup({
-      transparent_background = Transparent
+      transparent_background = true,
+      flavour = "auto",
+      background = {
+        light = "latte",
+        dark = "macchiato",
+      },
     })
-
-    -- Set color scheme
-    if time.hour < 8 or time.hour > 19 then
-      vim.cmd.colorscheme "catppuccin-frappe"
-    else
-      vim.cmd.colorscheme "catppuccin-latte"
-    end
-
-    vim.cmd.colorscheme "catppuccin-frappe"
+    vim.cmd.colorscheme("catppuccin")
   end,
 }
 -- return {

@@ -1,10 +1,10 @@
-font-family = "0xProto Nerd Font Mono"
-font-size = 16
+font-family = "DMMono Nerd Font"
+font-size = 14
 
 background-opacity = 0.93
 background-blur = true
 
-theme = "Nord"
+theme = "light:Catppuccin Latte, dark:Catppuccin Macchiato"
 
 keybind = shift+enter=text:\x1b\r
 

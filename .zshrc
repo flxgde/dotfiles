@@ -5,8 +5,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.rd/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Disable Oh My Zsh theme
-ZSH_THEME="agnoster"
+# Disable Oh My Zsh theme (using starship instead)
+ZSH_THEME=""
 
 # Load colors
 autoload -U colors && colors
@@ -117,4 +117,13 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+################
+### STARSHIP ###
+################
+
+# Generate starship config based on system theme
+$HOME/.local/bin/generate-starship-config
+
+eval "$(starship init zsh)"
 
