@@ -1,3 +1,4 @@
+
 local opt = vim.opt
 
 opt.number = true
@@ -47,6 +48,7 @@ opt.listchars:append {
 opt.list = true
 
 opt.swapfile = false
+opt.mouse = ""
 
 vim.cmd [[
   highlight LineNr guifg=#888888 guibg=NONE

@@ -31,7 +31,7 @@ function vim.flxg.duplicate()
     return
   end
 
-	if vim.loop.fs_stat(newfile) then
+	if vim.uv.fs_stat(newfile) then
 		return
 	end
 

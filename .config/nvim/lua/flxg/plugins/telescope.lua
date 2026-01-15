@@ -18,7 +18,13 @@ return {
 
     telescope.setup{
       defaults = {
-        path_display = { "smart" },
+        path_display = { "truncate" },
+        layout_config = {
+          horizontal = {
+            width = 0.9,
+            preview_width = 0.5,
+          },
+        },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous, -- move to prev result
