@@ -11,9 +11,9 @@ echo "Syncing system theme across components..."
 if [ -n "$TMUX" ]; then
   echo "Reloading Tmux config..."
   tmux source-file ~/.config/tmux/tmux.conf
-  tmux display-message "Theme synced!"
+  tmux display-message "Config reloaded. Create new windows/sessions for theme to apply."
 else
-  echo "Not in a tmux session (skipping tmux reload)"
+  echo "Not in a tmux session"
 fi
 
 # Reload zsh to pick up new starship config
