@@ -10,12 +10,11 @@ This repository contains my personal configuration files for a clean and customi
 - **Prompt:** Starship with `bracketed-segments` preset for a clean, minimal prompt.
 - **Window Manager:** Hyprland with custom workspace and theme configuration.
 - **Editor:** Neovim with modular Lua configuration, plugin management, and LSP support.
-- **Terminal:** Ghostty with personalized settings and auto-detecting Catppuccin theme.
+- **Terminal:** Ghostty with Catppuccin Macchiato theme.
 - **Status Bar:** Waybar with scripts for updates and system monitoring.
 - **Launcher:** Wofi with custom styling.
-- **Tmux:** Tmux with tpm (Tmux Plugin Manager), Catppuccin theme that auto-detects system light/dark preference.
-- **Scripts:** Custom binaries in `.local/bin` for workflow utilities and theme management.
-- **Theme System:** Automatic light/dark theme detection across all components with `sync-theme` utility.
+- **Tmux:** Tmux with tpm (Tmux Plugin Manager) and Catppuccin Macchiato theme.
+- **Scripts:** Custom binaries in `.local/bin` for workflow utilities.
 
 ---
 
@@ -47,21 +46,7 @@ chsh -s /usr/bin/zsh
 
 ---
 
-## Theme Management
+## Theme
 
-All components support automatic light/dark theme detection:
-
-**To sync themes when system theme changes:**
-```bash
-sync-theme
-```
-
-This script reloads:
-- **Tmux** configuration with theme-aware Catppuccin flavor
-- **Zsh** shell environment
-
-Components that auto-detect on next load:
-- **Neovim** - Catppuccin with `flavour = "auto"`
-- **Ghostty** - Configured with both light and dark themes
-- **Starship** - Uses system colors (preset-based, no palette switching)
+All components use **Catppuccin Macchiato** (dark theme) for a consistent look across the environment.
 

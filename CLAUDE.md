@@ -23,8 +23,6 @@ Personal dotfiles repository containing configurations for a development environ
 .local/bin/                 # Custom scripts
   tmux-sessionizer          # Create/switch tmux sessions from directories
   tmux-switch-session       # Switch between existing tmux sessions
-  detect-system-theme       # Detect system theme (light/dark)
-  sync-theme                # Sync theme across components (tmux, zsh)
 ```
 
 ## Key Conventions
@@ -73,22 +71,10 @@ Personal dotfiles repository containing configurations for a development environ
 - WS 6: Mail
 - WS 8: Spotify
 
-## Theme System
+## Theme
 
-**Theme Detection:**
-- `detect-system-theme` script detects system-wide light/dark theme preference
-- macOS: Reads `AppleInterfaceStyle` setting
-- Linux: Checks GTK preferences and GNOME dconf settings
-
-**Theme-aware Components:**
-- **Tmux:** Auto-detects theme and uses Catppuccin `latte` (light) or `macchiato` (dark)
-- **Nvim:** Uses Catppuccin with `flavour = "auto"` for automatic detection
-- **Ghostty:** Uses Catppuccin themes configured as `light:Latte, dark:Macchiato`
-- **Starship:** Uses `bracketed-segments` preset with system colors (no theme-specific palette)
-
-**Syncing Themes:**
-Run `sync-theme` script to reload theme across components when system theme changes:
-```bash
-sync-theme
-```
-This will reload tmux config and regenerate shell prompt. Nvim and Ghostty auto-detect on next load.
+All components use **Catppuccin Macchiato** (dark theme):
+- **Tmux:** Catppuccin macchiato
+- **Nvim:** Catppuccin macchiato with transparent background
+- **Ghostty:** Catppuccin Macchiato
+- **Starship:** Catppuccin Mocha palette
