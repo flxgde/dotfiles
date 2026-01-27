@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+git for-each-ref --sort=committerdate refs/heads/ \
+  --format='%(color:yellow)%(committerdate:short)%(color:reset) %(color:green)%(refname:short)%(color:reset) %(color:blue)%(authorname)%(color:reset) %(color:dim)%(subject)%(color:reset)' \
+  --color=always | fzf --ansi | awk '{print $2}' | xargs git checkout
