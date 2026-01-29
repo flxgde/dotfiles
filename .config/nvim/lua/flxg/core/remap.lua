@@ -52,3 +52,6 @@ keymap.set("n", "<leader>qo", "<cmd>copen<CR>", { desc = "Open quickfix" })
 keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Close quickfix" })
 
 keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
+
+keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+
