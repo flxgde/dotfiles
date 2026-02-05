@@ -55,3 +55,5 @@ keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
 
 keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
+vim.keymap.set({'n', 'i', 'v'}, '<F1>', '<nop>')
+

@@ -9,18 +9,10 @@ return {
       options = {
         theme = "catppuccin",
       },
-      tabline = {
-        lualine_a = {'filename'},
-        lualine_b = {'branch'},
-        lualine_c = {'diagnostics'},
-        lualine_x = {},
-        lualine_y = {'lsp_status'},
-        lualine_z = {'filesize'}
-      },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'buffers' },
-        lualine_c = { },
+        lualine_b = { 'branch' },
+        lualine_c = { 'filename' },
         lualine_x = {
           {
             lazy_status.updates,
@@ -31,7 +23,12 @@ return {
           { "fileformat" },
           { "filetype" },
         },
+        lualine_y = {
+
+        }
       },
+      extensions = { "fugitive", "quickfix", "fzf", "lazy", "mason", "nvim-dap-ui", "oil", "trouble" },
+
     })
   end,
 }
