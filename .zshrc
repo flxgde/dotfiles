@@ -42,6 +42,8 @@ zinit wait lucid for \
 #############
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ll='ls -alF'
+
 
 # Common aliases (previously from OMZ)
 alias ll='ls -lh'
