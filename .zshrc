@@ -43,6 +43,12 @@ zinit wait lucid for \
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Common aliases (previously from OMZ)
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias l='ls -lah'
+alias lsa='ls -lah'
+
 ########################
 ### TMUX SESSIONIZER ###
 ########################
