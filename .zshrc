@@ -136,21 +136,8 @@ setopt HIST_IGNORE_DUPS
 ##############
 
 # Lazy-load SDKMAN - only initialize when needed
-if [[ $(uname) == "Darwin" ]]; then
-  export SDKMAN_DIR="$HOME/.sdkman"
-
-  __sdkman_lazy_load() {
-    unfunction sdk java gradle mvn kotlin groovy 2>/dev/null
-    [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-  }
-
-  sdk() { __sdkman_lazy_load && sdk "$@" }
-  java() { __sdkman_lazy_load && java "$@" }
-  gradle() { __sdkman_lazy_load && gradle "$@" }
-  mvn() { __sdkman_lazy_load && mvn "$@" }
-  kotlin() { __sdkman_lazy_load && kotlin "$@" }
-  groovy() { __sdkman_lazy_load && groovy "$@" }
-fi
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 ################
 ### STARSHIP ###
