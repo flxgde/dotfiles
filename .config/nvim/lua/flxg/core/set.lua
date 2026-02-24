@@ -28,13 +28,8 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
 
 
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
--- vim.g.netrw_browse_split = 4
--- vim.g.netrw_altv = 1
--- vim.g.netrw_alto = 1
--- vim.g.netrw_winsize = 25
--- vim.g.netrw_preview = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
 
 
 opt.listchars:append {
