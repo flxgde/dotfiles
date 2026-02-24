@@ -135,17 +135,9 @@ setopt HIST_IGNORE_DUPS
 ### SDKMAN ###
 ##############
 
-# Lazy-load SDKMAN - only initialize when needed
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-################
-### STARSHIP ###
-################
-
-# Cached starship init (regenerate with: starship init zsh > ~/.starship.zsh)
-if [[ -f ~/.starship.zsh ]]; then
-  source ~/.starship.zsh
-else
-  eval "$(starship init zsh)"
-fi
+# Load pure theme
+zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+zinit light sindresorhus/pure
