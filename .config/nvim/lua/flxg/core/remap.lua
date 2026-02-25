@@ -57,3 +57,12 @@ keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set({'n', 'i', 'v'}, '<F1>', '<nop>')
 
+-- German umlauts (insert mode): Alt + vowel/s
+keymap.set("i", "<A-a>", "ä")
+keymap.set("i", "<A-o>", "ö")
+keymap.set("i", "<A-u>", "ü")
+keymap.set("i", "<A-A>", "Ä")
+keymap.set("i", "<A-O>", "Ö")
+keymap.set("i", "<A-U>", "Ü")
+keymap.set("i", "<A-s>", "ß")
+
