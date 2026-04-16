@@ -32,7 +32,7 @@ return {
       callback = function(ev)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf, silent = true }
+        local opts = { buf = ev.buf, silent = true }
 
         -- set keybinds
         opts.desc = "Show LSP references"
@@ -63,10 +63,10 @@ return {
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
         opts.desc = "Go to previous diagnostic"
-        keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
+        keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, on_jump = function() vim.diagnostic.open_float() end }) end, opts)
 
         opts.desc = "Go to next diagnostic"
-        keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
+        keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, on_jump = function() vim.diagnostic.open_float() end }) end, opts)
 
         opts.desc = "Show documentation for what is under cursor"
         keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor

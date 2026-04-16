@@ -35,7 +35,7 @@ keymap.set("n", "<leader>Y", "\"+Y")
 
 keymap.set("i", "<C-c>", "<Esc>")
 keymap.set("n", "Q", "<nop>")
-keymap.set("n", "<leader>f", vim.lsp.buf.format)
+keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, { desc = "Format buffer" })
 
 keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -53,9 +53,15 @@ keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Close quickfix" })
 
 keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Close buffer" })
 
+keymap.set("n", "<leader>rc", vim.flxg.run_line, { desc = "Run current line as shell command" })
+
 keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 vim.keymap.set({'n', 'i', 'v'}, '<F1>', '<nop>')
+
+-- Toggle comment with Ctrl+/
+keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Toggle comment" })
+keymap.set("v", "<C-/>", "gc", { remap = true, desc = "Toggle comment" })
 
 -- German umlauts (insert mode): Alt + vowel/s
 keymap.set("i", "<A-a>", "ä")

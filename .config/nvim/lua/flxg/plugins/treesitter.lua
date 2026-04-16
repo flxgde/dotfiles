@@ -14,8 +14,8 @@ return {
       highlight = {
         enable = true,
       },
-      -- enable indentation
-      indent = { enable = true },
+      -- enable indentation (disabled for JS/TS: broken in Neovim 0.12 due to iter_matches 'all' removal)
+      indent = { enable = true, disable = { "javascript", "typescript", "tsx", "jsx" } },
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,

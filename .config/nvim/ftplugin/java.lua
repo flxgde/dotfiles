@@ -72,16 +72,16 @@ local config = {
   },
 
   on_attach = function(client, bufnr)
-    local opts = { buffer = bufnr, silent = true }
+    local opts = { buf = bufnr, silent = true }
     local keymap = vim.keymap
 
     -- jdtls specific keymaps
-    keymap.set("n", "<leader>co", jdtls.organize_imports, { buffer = bufnr, desc = "Organize imports" })
-    keymap.set("n", "<leader>cv", jdtls.extract_variable, { buffer = bufnr, desc = "Extract variable" })
-    keymap.set("v", "<leader>cv", function() jdtls.extract_variable(true) end, { buffer = bufnr, desc = "Extract variable" })
-    keymap.set("n", "<leader>cc", jdtls.extract_constant, { buffer = bufnr, desc = "Extract constant" })
-    keymap.set("v", "<leader>cc", function() jdtls.extract_constant(true) end, { buffer = bufnr, desc = "Extract constant" })
-    keymap.set("v", "<leader>cm", function() jdtls.extract_method(true) end, { buffer = bufnr, desc = "Extract method" })
+    keymap.set("n", "<leader>co", jdtls.organize_imports, { buf = bufnr, desc = "Organize imports" })
+    keymap.set("n", "<leader>cv", jdtls.extract_variable, { buf = bufnr, desc = "Extract variable" })
+    keymap.set("v", "<leader>cv", function() jdtls.extract_variable(true) end, { buf = bufnr, desc = "Extract variable" })
+    keymap.set("n", "<leader>cc", jdtls.extract_constant, { buf = bufnr, desc = "Extract constant" })
+    keymap.set("v", "<leader>cc", function() jdtls.extract_constant(true) end, { buf = bufnr, desc = "Extract constant" })
+    keymap.set("v", "<leader>cm", function() jdtls.extract_method(true) end, { buf = bufnr, desc = "Extract method" })
   end,
 }
 

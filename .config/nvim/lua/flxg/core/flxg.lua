@@ -40,3 +40,24 @@ function vim.flxg.duplicate()
 
   vim.cmd('edit ' .. vim.fn.fnameescape(newfile))
 end
+
+function vim.flxg.run_line()
+  local lnum = vim.fn.line('.')
+  local lines = {}
+  while true do
+    local line = vim.fn.getline(lnum)
+    if line:sub(-1) == '\\' then
+      table.insert(lines, line:sub(1, -2))
+      lnum = lnum + 1
+    else
+      table.insert(lines, line)
+      break
+    end
+  end
+  local cmd = table.concat(lines, ' ')
+  local output = vim.fn.systemlist(cmd)
+  vim.cmd('new')
+  vim.bo.buftype = 'nofile'
+  vim.bo.bufhidden = 'wipe'
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, output)
+end
