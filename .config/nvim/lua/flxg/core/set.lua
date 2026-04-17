@@ -31,17 +31,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
-
-opt.listchars:append {
-  eol = "↵",
-  trail = "·",
-  extends = "▶",
-  precedes = "◀",
-  nbsp = "⏑",
-}
-
-opt.list = true
-
 opt.swapfile = false
 opt.mouse = ""
 
