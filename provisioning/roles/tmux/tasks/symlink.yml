@@ -1,0 +1,28 @@
+---
+- name: Ensure ~/.config directory exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Stat ~/.config/tmux
+  become: false
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/tmux"
+  register: tmux_config_stat
+
+- name: Remove existing ~/.config/tmux if it's a real directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/tmux"
+    state: absent
+  when: tmux_config_stat.stat.exists and tmux_config_stat.stat.isdir and not tmux_config_stat.stat.islnk
+
+- name: Symlink ~/.config/tmux to dotfiles checkout
+  become: false
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/../.config/tmux"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/tmux"
+    state: link
+    force: true

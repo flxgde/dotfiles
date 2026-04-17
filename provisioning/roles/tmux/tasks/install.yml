@@ -1,0 +1,6 @@
+---
+- name: Install tmux
+  become: "{{ ansible_facts['os_family'] != 'Darwin' }}"
+  ansible.builtin.package:
+    name: tmux
+    state: present

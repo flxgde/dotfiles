@@ -1,0 +1,36 @@
+---
+- name: Symlink ~/.zshrc to dotfiles checkout
+  become: false
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/../.zshrc"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
+    state: link
+    force: true
+
+- name: Ensure ~/.config exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Stat ~/.config/zsh
+  become: false
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/zsh"
+  register: zsh_config_stat
+
+- name: Remove existing ~/.config/zsh if it's a real directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/zsh"
+    state: absent
+  when: zsh_config_stat.stat.exists and zsh_config_stat.stat.isdir and not zsh_config_stat.stat.islnk
+
+- name: Symlink ~/.config/zsh to dotfiles checkout
+  become: false
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/../.config/zsh"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/zsh"
+    state: link
+    force: true

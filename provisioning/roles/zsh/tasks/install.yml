@@ -1,0 +1,18 @@
+---
+- name: Install zsh and zoxide
+  become: "{{ ansible_facts['os_family'] != 'Darwin' }}"
+  ansible.builtin.package:
+    name: "{{ zsh_packages }}"
+    state: present
+
+- name: Resolve zsh binary path
+  ansible.builtin.shell: command -v zsh
+  register: zsh_which
+  changed_when: false
+  check_mode: false
+
+- name: Set default shell to zsh for current user
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_facts['user_id'] }}"
+    shell: "{{ zsh_which.stdout }}"

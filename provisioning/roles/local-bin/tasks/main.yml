@@ -1,0 +1,25 @@
+---
+- name: Ensure ~/.local/bin exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/bin"
+    state: directory
+    mode: "0755"
+
+- name: List scripts to symlink
+  ansible.builtin.find:
+    paths: "{{ playbook_dir }}/../.local/bin"
+    file_type: file
+  delegate_to: localhost
+  register: local_bin_scripts
+
+- name: Symlink each script into ~/.local/bin
+  become: false
+  ansible.builtin.file:
+    src: "{{ item.path }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/bin/{{ item.path | basename }}"
+    state: link
+    force: true
+  loop: "{{ local_bin_scripts.files }}"
+  loop_control:
+    label: "{{ item.path | basename }}"

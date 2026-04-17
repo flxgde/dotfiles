@@ -1,0 +1,7 @@
+---
+- name: "Shell environment (zsh + zoxide, later: starship, tmux)"
+  hosts: all
+  gather_facts: true
+  roles:
+    - role: zsh
+      tags: [zsh]

@@ -1,0 +1,9 @@
+---
+- name: "Tmux (multiplexer + config)"
+  hosts: all
+  gather_facts: true
+  roles:
+    - role: local-bin
+      tags: [tmux, local-bin]
+    - role: tmux
+      tags: [tmux]

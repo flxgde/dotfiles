@@ -1,0 +1,13 @@
+---
+# Known-supported Ansible OS families for this role.
+zsh_supported_os_families:
+  - Archlinux
+  - Debian
+  - RedHat
+  - Darwin
+
+# Package names are identical across pacman / apt / dnf / brew for zsh and zoxide,
+# so ansible.builtin.package suffices. Add per-family overrides here if that changes.
+zsh_packages:
+  - zsh
+  - zoxide

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Print tmux sessions separated by spaces, highlighting the current one.
+# Consumed by tmux status-right: `#(~/.local/bin/tmux-session-list)`.
+
+current=$(tmux display-message -p '#S' 2>/dev/null) || exit 0
+
+i=1
+tmux list-sessions -F '#S' 2>/dev/null | while read -r s; do
+  if [ "$s" = "$current" ]; then
+    printf '#[fg=blue,bold]%d:%s#[default] ' "$i" "$s"
+  else
+    printf '#[fg=brightblack]%d:%s#[default] ' "$i" "$s"
+  fi
+  i=$((i + 1))
+done

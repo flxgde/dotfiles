@@ -1,0 +1,6 @@
+---
+tmux_supported_os_families:
+  - Archlinux
+  - Debian
+  - RedHat
+  - Darwin
