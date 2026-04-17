@@ -13,7 +13,7 @@ else
    	# Zoxide frecent dirs
    	Z_DIRS=$(zoxide query -l 2>/dev/null)
 
-    selected=$(printf "%s\n%s\n" "$STATIC_DIRS" "$Z_DIRS" \
+    selected=$(printf "%s\n%s\n" "$Z_DIRS" "$STATIC_DIRS" \
       | awk '!seen[$0]++' \
       | fzf --preview '
         if [ -d {} ]; then
