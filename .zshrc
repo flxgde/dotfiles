@@ -4,6 +4,7 @@
 export PATH="$HOME/.rd/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR='nvim'
+bindkey -e  # Use emacs keybindings (prevents vi mode, keeps Ctrl+R search)
 
 ###############
 ### ZINIT #####
@@ -33,9 +34,10 @@ zinit wait lucid for \
   OMZL::git.zsh \
   OMZP::git
 
-# FZF
+# FZF + fzf history search (Ctrl+R)
 zinit wait lucid for \
-  junegunn/fzf
+  junegunn/fzf \
+  joshskidmore/zsh-fzf-history-search
 
 #############
 ### ALIAS ###
