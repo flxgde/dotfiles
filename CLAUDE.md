@@ -23,6 +23,8 @@ Personal dotfiles repository containing configurations for a development environ
 .local/bin/                 # Custom scripts
   tmux-sessionizer          # Create/switch tmux sessions from directories
   tmux-switch-session       # Switch between existing tmux sessions
+ansible/                    # Ansible playbook that provisions a fresh EndeavourOS
+                            # install and symlinks these configs — see ansible/CLAUDE.md
 ```
 
 ## Key Conventions

@@ -1,0 +1,27 @@
+---
+- name: Create .local/bin directory
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/bin"
+    state: directory
+    mode: '0755'
+
+- name: Symlink tmux-sessionizer
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.local/bin/tmux-sessionizer"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/bin/tmux-sessionizer"
+    state: link
+    force: yes
+
+- name: Symlink tmux-switch-session
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.local/bin/tmux-switch-session"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/bin/tmux-switch-session"
+    state: link
+    force: yes
+
+- name: Symlink git smart checkout
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.local/bin/git-smart-checkout"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.local/bin/git-smart-checkout"
+    state: link
+    force: yes

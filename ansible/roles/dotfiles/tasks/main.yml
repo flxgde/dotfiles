@@ -1,0 +1,63 @@
+---
+- name: Clone dotfiles repo
+  ansible.builtin.git:
+    repo: "https://github.com/flxgde/dotfiles.git"
+    dest: "{{ ansible_facts['env']['HOME'] }}/dotfiles"
+    version: main
+    update: yes
+  become: false
+  tags:
+    - dotfiles
+    - zsh
+    - hyprland
+    - nvim
+    - ghostty
+    - starship
+
+- name: Create .config directory
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
+    state: directory
+    mode: '0755'
+
+- name: Symlink zsh config
+  ansible.builtin.import_tasks: zsh.yml
+  tags:
+    - zsh
+    - dotfiles
+
+- name: Symlink hyprland config
+  ansible.builtin.import_tasks: hyprland.yml
+  when: ansible_facts['os_family'] != "Darwin"
+  tags:
+    - hyprland
+    - dotfiles
+
+- name: Symlink neovim config
+  ansible.builtin.import_tasks: neovim.yml
+  tags:
+    - nvim
+    - dotfiles
+
+- name: Symlink ghostty config
+  ansible.builtin.import_tasks: ghostty.yml
+  tags:
+    - ghostty
+    - dotfiles
+
+- name: Symlink starship config
+  ansible.builtin.import_tasks: starship.yml
+  tags:
+    - starship
+    - dotfiles
+
+- name: Symlink executables
+  ansible.builtin.import_tasks: local-bin.yml
+  tags:
+    - dotfiles
+
+- name: Cleanup obsolete files
+  ansible.builtin.import_tasks: cleanup.yml
+  tags:
+    - never
+    - cleanup

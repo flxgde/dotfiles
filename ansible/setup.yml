@@ -1,0 +1,37 @@
+---
+- name: Setup my eos system
+  hosts: all
+  roles:
+    - role: base
+      tags: [base]
+
+    - role: zsh
+      tags: [zsh]
+
+    - role: ghostty
+      tags: [ghostty]
+
+    - role: hyprland
+      tags: [hyprland]
+      when: ansible_facts['os_family'] != "Darwin"
+
+    - role: neovim
+      tags: [nvim]
+
+    - role: starship
+      tags: [starship]
+
+    - role: dotfiles
+      tags: [dotfiles]
+
+    - role: docker
+      tags: [docker]
+
+    - role: tmux
+      tags: [tmux]
+
+    - role: uninstall-zen
+      tags: [uninstall-zen]
+
+    - role: browser
+      tags: [browser]

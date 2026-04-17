@@ -15,6 +15,7 @@ This repository contains my personal configuration files for a clean and customi
 - **Launcher:** Wofi with custom styling.
 - **Tmux:** Tmux with tpm (Tmux Plugin Manager) and Catppuccin Macchiato theme.
 - **Scripts:** Custom binaries in `.local/bin` for workflow utilities.
+- **Provisioning:** Ansible playbook under [`ansible/`](./ansible) that installs and symlinks everything on a fresh EndeavourOS install. Run with `cd ansible && ansible-playbook setup.yml -i inventory/self.yml`.
 
 ---
 

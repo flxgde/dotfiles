@@ -1,0 +1,23 @@
+---
+base_packages_arch:
+  - git
+  - htop
+  - zsh
+  - base-devel
+  - yay
+  - ttf-0xproto-nerd
+  - ripgrep
+  - fd
+  - fzf
+  - bat
+  - exa
+
+base_packages_darwin:
+  - git
+  - htop
+  - zsh
+  - ripgrep
+  - fd
+  - fzf
+  - bat
+  - eza

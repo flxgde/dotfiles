@@ -1,0 +1,8 @@
+---
+- name: Install Brave browser
+  become: false
+  community.general.pacman:
+    name: brave-bin
+    state: present
+    executable: yay
+  when: ansible_system != 'Darwin'

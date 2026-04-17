@@ -1,0 +1,14 @@
+---
+- name: Remove existing starship config
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/starship.toml"
+    state: absent
+  become: false
+
+- name: Symlink starship config
+  become: false
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.config/starship.toml"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/starship.toml"
+    state: link
+    force: yes

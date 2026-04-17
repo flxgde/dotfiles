@@ -1,0 +1,60 @@
+---
+- name: Update pacman cache
+  become: true
+  community.general.pacman:
+    update_cache: yes
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install base packages (Arch)
+  become: true
+  community.general.pacman:
+    name:
+      - git
+      - htop
+      - zsh
+      - base-devel
+      - yay
+      - ttf-0xproto-nerd
+      - ripgrep
+      - fd
+      - fzf
+      - bat
+      - exa
+    state: present
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Ensure Homebrew is installed
+  stat:
+    path: /opt/homebrew/bin/brew
+  register: brew_stat
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install Homebrew
+  shell: '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  when: ansible_facts['os_family'] == "Darwin" and not brew_stat.stat.exists
+
+- name: Install base packages (macOS)
+  community.general.homebrew:
+    name:
+      - git
+      - htop
+      - zsh
+      - ripgrep
+      - fd
+      - fzf
+      - bat
+      - eza
+    state: present
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Check if 0xProto Nerd Font is already installed (macOS)
+  ansible.builtin.stat:
+    path: /Users/fge/Library/Fonts/0xProtoNerdFont-Regular.ttf
+  register: proto_nerd_font_stat
+  when: ansible_facts['os_family'] == "Darwin"
+
+- name: Install nerd font (macOS)
+  community.general.homebrew_cask:
+    name: font-0xproto-nerd-font
+    state: present
+  when: ansible_facts['os_family'] == "Darwin" and not proto_nerd_font_stat.stat.exists

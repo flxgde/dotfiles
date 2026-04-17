@@ -1,0 +1,11 @@
+---
+# Cleanup tasks for removing obsolete files
+# Run with: ansible-playbook setup.yml -i inventory/self.yml --tags cleanup
+
+- name: Remove obsolete theme scripts
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/bin/{{ item }}"
+    state: absent
+  loop:
+    - detect-system-theme
+    - sync-theme
