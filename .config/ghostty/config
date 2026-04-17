@@ -1,5 +1,5 @@
 font-family = "DMMono Nerd Font"
-font-size = 10
+font-size = 16
 
 background-opacity = 0.93
 background-blur = true
@@ -9,4 +9,5 @@ theme = "Catppuccin Macchiato"
 macos-option-as-alt = true
 
 keybind = shift+enter=text:\x1b\r
-
+window-padding-y = 10
+window-padding-x = 10
