@@ -21,7 +21,7 @@
 - name: Create symlink to dotfiles tmux config
   become: false
   ansible.builtin.file:
-    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.config/tmux"
+    src: "{{ playbook_dir }}/../.config/tmux"
     dest: "{{ ansible_facts['env']['HOME'] }}/.config/tmux"
     state: link
 

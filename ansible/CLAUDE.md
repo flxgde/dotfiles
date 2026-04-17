@@ -44,7 +44,7 @@ ansible-playbook setup.yml -i inventory/self.yml --tags cleanup
 4. `hyprland` - Window manager, waybar, wofi, ly display manager (uninstalls sddm/greetd)
 5. `neovim` - Editor
 6. `browser` - Brave via AUR
-7. `dotfiles` - Clones github.com/flxgde/dotfiles, symlinks configs for zsh, hyprland, neovim, ghostty, waybar
+7. `dotfiles` - Symlinks configs (zsh, hyprland, neovim, ghostty, starship, waybar, local-bin) from this repo checkout (`playbook_dir/..`) into `$HOME`
 8. `docker` - Docker daemon, adds user to docker group
 9. `tmux` - Terminal multiplexer: installs package, clones tpm (Tmux Plugin Manager), symlinks config from dotfiles, installs plugins
 10. `uninstall-zen` - Removes zen-browser-bin

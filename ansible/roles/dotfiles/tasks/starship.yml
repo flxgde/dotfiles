@@ -8,7 +8,7 @@
 - name: Symlink starship config
   become: false
   ansible.builtin.file:
-    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.config/starship.toml"
+    src: "{{ dotfiles_root }}/.config/starship.toml"
     dest: "{{ ansible_facts['env']['HOME'] }}/.config/starship.toml"
     state: link
     force: yes

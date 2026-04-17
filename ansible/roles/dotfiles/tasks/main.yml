@@ -1,11 +1,7 @@
 ---
-- name: Clone dotfiles repo
-  ansible.builtin.git:
-    repo: "https://github.com/flxgde/dotfiles.git"
-    dest: "{{ ansible_facts['env']['HOME'] }}/dotfiles"
-    version: main
-    update: yes
-  become: false
+- name: Set dotfiles repo root (this checkout)
+  ansible.builtin.set_fact:
+    dotfiles_root: "{{ playbook_dir }}/.."
   tags:
     - dotfiles
     - zsh

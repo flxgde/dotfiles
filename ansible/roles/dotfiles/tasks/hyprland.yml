@@ -8,7 +8,7 @@
 - name: Symlink hyprland
   become: false
   ansible.builtin.file:
-    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.config/hypr"
+    src: "{{ dotfiles_root }}/.config/hypr"
     dest: "{{ ansible_facts['env']['HOME'] }}/.config/hypr"
     state: link
     force: yes
@@ -22,7 +22,7 @@
 - name: Symlink waybar
   become: false
   ansible.builtin.file:
-    src: "{{ ansible_facts['env']['HOME'] }}/dotfiles/.config/waybar"
+    src: "{{ dotfiles_root }}/.config/waybar"
     dest: "{{ ansible_facts['env']['HOME'] }}/.config/waybar"
     state: link
     force: yes
