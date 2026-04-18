@@ -1,0 +1,17 @@
+---
+- name: Assert supported OS family
+  ansible.builtin.assert:
+    that: ansible_facts['os_family'] in hyprland_supported_os_families
+    fail_msg: "hyprland role only supports: {{ hyprland_supported_os_families | join(', ') }}"
+
+- name: Install hyprland
+  ansible.builtin.import_tasks: install.yml
+
+- name: Symlink hypr config files
+  ansible.builtin.import_tasks: symlink.yml
+
+- name: Ensure per-host monitors.conf exists
+  ansible.builtin.import_tasks: monitors.yml
+
+- name: Ensure Omarchy hyprlock.conf is linked
+  ansible.builtin.import_tasks: hyprlock.yml

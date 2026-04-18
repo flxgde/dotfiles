@@ -1,0 +1,6 @@
+---
+- name: Hyprland (window manager overlay on Omarchy)
+  hosts: localhost
+  gather_facts: true
+  roles:
+    - hyprland

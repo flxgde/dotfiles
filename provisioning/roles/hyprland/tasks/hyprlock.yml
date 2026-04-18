@@ -1,0 +1,21 @@
+---
+# Omarchy ships a hyprlock config at
+# ~/.local/share/omarchy/config/hypr/hyprlock.conf but relies on a
+# pointer at ~/.config/hypr/hyprlock.conf (where hyprlock looks by
+# default). This role doesn't ship a hyprlock.conf in dotfiles, so
+# ensure Omarchy's is linked whenever its source exists.
+
+- name: Stat Omarchy's stock hyprlock.conf
+  become: false
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.local/share/omarchy/config/hypr/hyprlock.conf"
+  register: omarchy_hyprlock_stat
+
+- name: Symlink ~/.config/hypr/hyprlock.conf to Omarchy's
+  become: false
+  ansible.builtin.file:
+    src: "{{ ansible_facts['env']['HOME'] }}/.local/share/omarchy/config/hypr/hyprlock.conf"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/hypr/hyprlock.conf"
+    state: link
+    force: true
+  when: omarchy_hyprlock_stat.stat.exists
