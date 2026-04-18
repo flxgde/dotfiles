@@ -1,0 +1,39 @@
+---
+- name: Ensure ~/.config exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Stat ~/.config/ghostty
+  become: false
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/ghostty"
+  register: ghostty_config_stat
+
+- name: Remove existing ~/.config/ghostty if it's a real directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/ghostty"
+    state: absent
+  when: ghostty_config_stat.stat.exists and ghostty_config_stat.stat.isdir and not ghostty_config_stat.stat.islnk
+
+- name: Symlink ~/.config/ghostty to dotfiles checkout
+  become: false
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/../.config/ghostty"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/ghostty"
+    state: link
+    force: true
+
+- name: Set ghostty as default via xdg-terminals.list (ghostty first, alacritty fallback)
+  become: false
+  ansible.builtin.copy:
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/xdg-terminals.list"
+    content: |
+      # Terminal emulator preference order for xdg-terminal-exec
+      # The first found and valid terminal will be used
+      com.mitchellh.ghostty.desktop
+      Alacritty.desktop
+    mode: "0644"

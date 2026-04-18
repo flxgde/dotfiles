@@ -1,0 +1,7 @@
+---
+- name: "Terminal emulators (ghostty)"
+  hosts: all
+  gather_facts: true
+  roles:
+    - role: ghostty
+      tags: [ghostty]

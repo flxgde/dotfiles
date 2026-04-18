@@ -1,13 +1,34 @@
+# Dynamic theme (Omarchy theme switcher updates this file at runtime)
+config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+
+# Font
 font-family = "DMMono Nerd Font"
 font-size = 16
 
-background-opacity = 0.93
-background-blur = true
+# Window
+window-padding-x = 14
+window-padding-y = 14
+confirm-close-surface = false
+resize-overlay = never
+gtk-toolbar-style = flat
 
-theme = "Catppuccin Macchiato"
+# Cursor
+cursor-style = block
+cursor-style-blink = false
 
+# Shell integration (keeps terminfo on SSH)
+shell-integration-features = no-cursor,ssh-env
+
+# Hyprland fix (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
+
+# macOS-specific, harmless on Linux
 macos-option-as-alt = true
 
+# Auto-launch tmux sessionizer on home directory
+command = /home/flxg/.local/bin/tmux-home
+
+# Keybinds
 keybind = shift+enter=text:\x1b\r
-window-padding-y = 10
-window-padding-x = 10
+keybind = shift+insert=paste_from_clipboard
+keybind = control+insert=copy_to_clipboard
