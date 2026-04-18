@@ -1,0 +1,6 @@
+---
+- name: Neovim (editor)
+  hosts: localhost
+  gather_facts: true
+  roles:
+    - neovim

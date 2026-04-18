@@ -1,0 +1,28 @@
+---
+- name: Ensure ~/.config exists
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config"
+    state: directory
+    mode: "0755"
+
+- name: Stat ~/.config/nvim
+  become: false
+  ansible.builtin.stat:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+  register: nvim_config_stat
+
+- name: Remove existing ~/.config/nvim if it's a real directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+    state: absent
+  when: nvim_config_stat.stat.exists and nvim_config_stat.stat.isdir and not nvim_config_stat.stat.islnk
+
+- name: Symlink ~/.config/nvim to dotfiles checkout
+  become: false
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/../.config/nvim"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.config/nvim"
+    state: link
+    force: true

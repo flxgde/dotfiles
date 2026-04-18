@@ -13,6 +13,9 @@ whichever distro the WSL image ships, typically `Debian`).
 | `backup.yml` | Tarball snapshot of ~/.config, ~/.zshrc, ~/.local/bin | active   |
 | `shell.yml`  | zsh                                                   | active   |
 | `tmux.yml`   | tmux (multiplexer + config)                           | active   |
+| `terminal.yml` | ghostty terminal emulator                           | active   |
+| `hyprland.yml` | hyprland window manager (overlay on Omarchy)        | active   |
+| `neovim.yml` | neovim editor + config                                | active   |
 
 > **Run `backup.yml` first** before any concern playbook when you're
 > migrating an existing machine — concern playbooks will replace real

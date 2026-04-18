@@ -1,0 +1,4 @@
+---
+neovim_supported_os_families:
+  - Archlinux
+  - Darwin
