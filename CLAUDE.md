@@ -14,17 +14,12 @@ Personal dotfiles repository containing configurations for a development environ
   nvim/                     # Neovim config (see .config/nvim/CLAUDE.md for details)
   tmux/tmux.conf            # Tmux config (prefix: C-a, vi keys, tpm plugins, theme detection)
   ghostty/config            # Ghostty terminal (auto-detects light/dark theme)
-  hypr/                     # Hyprland window manager (Linux only)
-    hyprland.conf           # Main config with keybinds and window rules
-    hyprlock.conf           # Lock screen config
-  waybar/                   # Status bar (Linux)
-  wofi/                     # App launcher (Linux)
-  starship.toml             # Starship prompt (bracketed-segments preset)
+  hypr/                     # Hyprland override configs (overlay on Omarchy)
 .local/bin/                 # Custom scripts
   tmux-sessionizer          # Create/switch tmux sessions from directories
   tmux-switch-session       # Switch between existing tmux sessions
-ansible/                    # Ansible playbook that provisions a fresh EndeavourOS
-                            # install and symlinks these configs — see ansible/CLAUDE.md
+provisioning/               # Per-concern Ansible playbooks: install apps and
+                            # symlink these configs. No OS bootstrapping.
 ```
 
 ## Key Conventions
@@ -56,10 +51,11 @@ ansible/                    # Ansible playbook that provisions a fresh Endeavour
 | Keybind | Action |
 |---------|--------|
 | `Super + Return` | Terminal (ghostty) |
-| `Super + W` | Browser (brave) |
-| `Super + R` | App launcher (wofi) |
-| `Super + Q` | Kill window |
-| `Super + H/J/K/L` | Move focus |
+| `Super + B` | Browser (Omarchy default) |
+| `Super + Space` | App launcher (Omarchy walker) |
+| `Super + W` | Kill window (Omarchy default) |
+| `Super + H/J/K/L` | Move focus (vim-style — overrides Omarchy) |
+| `Super + Shift + J/K/L` | Re-homed Omarchy actions displaced by vim nav |
 | `Super + 1-9` | Switch workspace |
 | `Super + Shift + 1-9` | Move window to workspace |
 | `Super + F` | Fullscreen |

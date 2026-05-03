@@ -1,27 +1,25 @@
 # provisioning
 
-Cross-distro Ansible playbooks for setting up a fresh machine from this
-dotfiles repo. Split by concern — run only what you need.
+Ansible playbooks that install the apps used by this dotfiles repo and
+symlink the configs into place. Split by concern — run only what you
+need. Nothing here bootstraps an OS; that's Omarchy's job.
 
-Supported OS families: `Archlinux`, `Debian`, `RedHat`, `Darwin` (WSL is
-whichever distro the WSL image ships, typically `Debian`).
+Supported OS families: `Archlinux`, `Darwin`.
 
 ## Playbooks
 
-| Playbook     | Concern                                               | Status   |
-|--------------|-------------------------------------------------------|----------|
-| `backup.yml` | Tarball snapshot of ~/.config, ~/.zshrc, ~/.local/bin | active   |
-| `shell.yml`  | zsh                                                   | active   |
-| `tmux.yml`   | tmux (multiplexer + config)                           | active   |
-| `terminal.yml` | ghostty terminal emulator                           | active   |
-| `hyprland.yml` | hyprland window manager (overlay on Omarchy)        | active   |
-| `neovim.yml` | neovim editor + config                                | active   |
+| Playbook       | Concern                                                          |
+|----------------|------------------------------------------------------------------|
+| `backup.yml`   | Tarball snapshot of ~/.config, ~/.zshrc, ~/.local/bin            |
+| `shell.yml`    | zsh + oh-my-zsh + .zshrc symlink                                 |
+| `tmux.yml`     | tmux + tpm + tmux.conf symlink                                   |
+| `terminal.yml` | ghostty + config symlink                                         |
+| `neovim.yml`   | neovim + config symlink                                          |
+| `hyprland.yml` | hyprland configs (symlink-only — Omarchy installs hyprland)      |
 
 > **Run `backup.yml` first** before any concern playbook when you're
 > migrating an existing machine — concern playbooks will replace real
 > config dirs with symlinks.
-
-More will be added as the old `ansible/` directory is migrated over.
 
 ## Running
 

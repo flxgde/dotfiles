@@ -1,7 +1,0 @@
----
-- name: Install hyprland (Arch)
-  become: true
-  community.general.pacman:
-    name: hyprland
-    state: present
-  when: ansible_facts['os_family'] == "Archlinux"

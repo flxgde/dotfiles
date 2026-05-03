@@ -1,6 +1,6 @@
 # flxg Dotfiles
 
-This repository contains my personal configuration files for a clean and customized desktop environment. It includes configurations for Zsh, Neovim, Hyprland, Ghostty, Waybar, Wofi, Tmux, and custom scripts.
+This repository contains my personal configuration files for a clean and customized desktop environment. It includes configurations for Zsh, Neovim, Hyprland, Ghostty, Tmux, and custom scripts.
 
 ---
 
@@ -11,11 +11,9 @@ This repository contains my personal configuration files for a clean and customi
 - **Window Manager:** Hyprland with custom workspace and theme configuration.
 - **Editor:** Neovim with modular Lua configuration, plugin management, and LSP support.
 - **Terminal:** Ghostty with Catppuccin Macchiato theme.
-- **Status Bar:** Waybar with scripts for updates and system monitoring.
-- **Launcher:** Wofi with custom styling.
 - **Tmux:** Tmux with tpm (Tmux Plugin Manager) and Catppuccin Macchiato theme.
 - **Scripts:** Custom binaries in `.local/bin` for workflow utilities.
-- **Provisioning:** Ansible playbook under [`ansible/`](./ansible) that installs and symlinks everything on a fresh EndeavourOS install. Run with `cd ansible && ansible-playbook setup.yml -i inventory/self.yml`.
+- **Provisioning:** Per-concern Ansible playbooks under [`provisioning/`](./provisioning) that install apps and symlink configs. No OS bootstrapping — see `provisioning/README.md`.
 
 ---
 
@@ -34,8 +32,6 @@ ln -sf ~/dotfiles/.config/nvim ~/.config/nvim
 ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
 ln -sf ~/dotfiles/.config/ghostty ~/.config/ghostty
 ln -sf ~/dotfiles/.config/tmux ~/.config/tmux
-ln -sf ~/dotfiles/.config/waybar ~/.config/waybar
-ln -sf ~/dotfiles/.config/wofi ~/.config/wofi
 
 3. **Make scripts executable:**
 
